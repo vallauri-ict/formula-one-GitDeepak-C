@@ -74,13 +74,13 @@ namespace FormulaOne_ConsoleProject
                         if (OK) OK = callExecuteSqlScript("SetConstraints");
                         if (OK)
                         {
-                            //System.IO.File.Delete(DbTools.WORKINGPATH + "Backup.mdf");
+                            System.IO.File.Delete(DbTools.WORKINGPATH + "Backup.mdf");
                             Console.WriteLine("OK");
                         }
                         else
                         {
-                            //System.IO.File.Copy(DbTools.WORKINGPATH + "Backup.mdf", DbTools.WORKINGPATH + "FormulaOne.mdf", true);
-                            //System.IO.File.Delete(DbTools.WORKINGPATH + "Backup.mdf");
+                            System.IO.File.Copy(DbTools.WORKINGPATH + "Backup.mdf", DbTools.WORKINGPATH + "FormulaOne.mdf", true);
+                            System.IO.File.Delete(DbTools.WORKINGPATH + "Backup.mdf");
                         }
                         break;
                     default:
@@ -108,7 +108,7 @@ namespace FormulaOne_ConsoleProject
         {
             try
             {
-                //db.DropTable(tableName);
+                db.DropTable(tableName);
                 Console.WriteLine("\nDROP " + tableName + " - SUCCESS\n");
                 return true;
             }
