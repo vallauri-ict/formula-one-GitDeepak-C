@@ -18,3 +18,12 @@ F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_C
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.csproj.CopyComplete
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.exe
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.pdb
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\bin\Debug\FormulaOne_Console.exe.config
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\bin\Debug\FormulaOne_Console.exe
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\bin\Debug\FormulaOne_Console.pdb
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\bin\Debug\FormulaOne_Dll.dll
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\bin\Debug\FormulaOne_Dll.pdb
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.csprojAssemblyReference.cache
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.csproj.CopyComplete
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.exe
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Console\obj\Debug\FormulaOne_Console.pdb

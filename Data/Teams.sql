@@ -1,15 +1,19 @@
 CREATE TABLE [dbo].[Teams] (
-    [id]              INT           IDENTITY (1, 1) NOT NULL,
-    [name]            VARCHAR (128) 				NOT NULL,
-    [fullTeamName]    VARCHAR (128) 				NOT NULL,
-    [extCountry]      CHAR (2)      				NOT NULL,
-    [powerUnit]       VARCHAR (128) 				NOT NULL,
-    [technicalChief]  VARCHAR (128) 				NOT NULL,
-    [chassis]         VARCHAR (128) 				NOT NULL,
-    [extFirstDriver]  INT           				NOT NULL,
-    [extSecondDriver] INT           				NOT NULL,
-	[logo]			  VARCHAR(512)  				NOT NULL,
-	[img]			  VARCHAR(512)  				NOT NULL
+  [id] int PRIMARY KEY NOT Null,
+  [name] varchar(30),
+  [fullTeamName] varchar(255),
+  [base] varchar(255),
+  [extCountry] varchar(2),
+  [teamChief] varchar(64),
+  [technicalChief] varchar(64),
+  [powerUnit] varchar(64),
+  [chassis] varchar(10),
+  [firstTeamEntry] date,
+  [worldChampionships] int,
+  [extFirstDriver] int,
+  [extSecondDriver] int,
+  [imgLogo] varchar(512),
+  [imgCar] varchar(512)
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 

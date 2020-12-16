@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -125,5 +126,60 @@ namespace FormulaOne_Dll
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        public static List<string> GetCountries()
+        {
+            List<string> retVal = new List<string>();
+            using (SqlConnection dbCon = new SqlConnection())
+            {
+                dbCon.ConnectionString = CONNECTION_STRING;
+                Console.WriteLine("\nQuery data example:");
+                Console.WriteLine("==========================================\n");
+                string sql = "SELECT * FROM Countries";
+                using (SqlCommand command = new SqlCommand(sql, dbCon))
+                {
+                    dbCon.Open();
+                    using(SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string isoCode = reader.GetString(0);
+                            string descr = reader.GetString(1);
+                            Console.WriteLine("(0) (1)", isoCode, descr);
+                            retVal.Add(isoCode + " - " + descr);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public static List<string> GetDrivers()
+        {
+            List<string> retVal = new List<string>();
+            using (SqlConnection dbCon = new SqlConnection())
+            {
+                dbCon.ConnectionString = CONNECTION_STRING;
+                Console.WriteLine("\nQuery data example:");
+                Console.WriteLine("==========================================\n");
+                string sql = "SELECT * FROM drivers";
+                using (SqlCommand command = new SqlCommand(sql, dbCon))
+                {
+                    dbCon.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string number = reader.GetString(0);
+                            string name = reader.GetString(1);
+                            Console.WriteLine("(0) (1)", number, name);
+                            retVal.Add(number + " - " + name);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
     }
 }

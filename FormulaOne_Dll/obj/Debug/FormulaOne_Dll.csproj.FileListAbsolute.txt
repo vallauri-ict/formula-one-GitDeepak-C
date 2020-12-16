@@ -10,3 +10,14 @@ F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_D
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.csproj.CoreCompileInputs.cache
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.dll
 F:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.pdb
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\bin\Debug\FormulaOne_Dll.dll
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\bin\Debug\FormulaOne_Dll.pdb
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.csprojAssemblyReference.cache
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.dll
+E:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.pdb
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\bin\Debug\FormulaOne_Dll.dll
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\bin\Debug\FormulaOne_Dll.pdb
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.csprojAssemblyReference.cache
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.csproj.CoreCompileInputs.cache
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.dll
+D:\Triennio\QUINTA_SUP\Informatica\Lab\Progetti\FormulaOne_Solution\FormulaOne_Dll\obj\Debug\FormulaOne_Dll.pdb
