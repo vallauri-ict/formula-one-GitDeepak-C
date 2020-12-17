@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -127,31 +128,30 @@ namespace FormulaOne_Dll
             }
         }
 
-        public static List<string> GetCountries()
+        public static DataTable GetDaTa(string dbName)
         {
-            List<string> retVal = new List<string>();
-            using (SqlConnection dbCon = new SqlConnection())
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter;
+
+            try
             {
-                dbCon.ConnectionString = CONNECTION_STRING;
-                Console.WriteLine("\nQuery data example:");
-                Console.WriteLine("==========================================\n");
-                string sql = "SELECT * FROM Countries";
-                using (SqlCommand command = new SqlCommand(sql, dbCon))
+                using (SqlConnection dbCon = new SqlConnection())
                 {
+                    dbCon.ConnectionString = CONNECTION_STRING;
                     dbCon.Open();
-                    using(SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string isoCode = reader.GetString(0);
-                            string descr = reader.GetString(1);
-                            Console.WriteLine("(0) (1)", isoCode, descr);
-                            retVal.Add(isoCode + " - " + descr);
-                        }
-                    }
+
+                    string sql = "SELECT * FROM " + dbName;
+                    SqlCommand command = new SqlCommand(sql, dbCon);
+                    adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dt);
                 }
             }
-            return retVal;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+            return dt;
         }
 
         public static List<string> GetDrivers()

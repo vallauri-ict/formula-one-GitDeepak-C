@@ -24,57 +24,21 @@ namespace FormulaOne_WebForm
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Controllo btnMostraNazioni.
+        /// Controllo cmbDb.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMostraNazioni;
+        protected global::System.Web.UI.WebControls.DropDownList cmbDb;
 
         /// <summary>
-        /// Controllo btnMostraDrivers.
+        /// Controllo GridViewDati.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMostraDrivers;
-
-        /// <summary>
-        /// Controllo btnMostraTeams.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMostraTeams;
-
-        /// <summary>
-        /// Controllo GridViewCountries.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewCountries;
-
-        /// <summary>
-        /// Controllo GridViewDrivers.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewDrivers;
-
-        /// <summary>
-        /// Controllo GridViewTeams.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewTeams;
+        protected global::System.Web.UI.WebControls.GridView GridViewDati;
     }
 }
