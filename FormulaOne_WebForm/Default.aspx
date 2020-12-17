@@ -11,7 +11,7 @@
         body{background: rgb(50, 50, 50); color: #fff}
         #form1 div{margin:30px auto; width: fit-content; padding: 0 20px}
         h1{text-align: center; margin: 10px auto; color: #fff}
-        #wrapperDati{margin: 10px auto;}
+        #wrapperDati{margin: 10px;}
         #wrapperDati div{float:left}
     </style>
 <body>
