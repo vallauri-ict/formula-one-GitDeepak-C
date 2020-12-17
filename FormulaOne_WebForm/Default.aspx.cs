@@ -1,8 +1,5 @@
 ﻿using FormulaOne_Dll;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -28,14 +25,21 @@ namespace FormulaOne_WebForm
 
         protected void btnLoadCountries_Click(object sender, EventArgs e)
         {
-            GridView1.DataSource = DbTools.GetCountries();
-            GridView1.DataBind();
+            GridViewCountries.DataSource = DbTools.GetCountries();
+            GridViewCountries.DataBind();            
         }
 
         protected void btnLoadDrivers_Click(object sender, EventArgs e)
         {
-            GridView2.DataSource = DbTools.GetDrivers();
-            GridView2.DataBind();
+            GridViewDrivers.DataSource = DbTools.GetDrivers();
+            GridViewDrivers.DataBind();
+        }
+
+        protected void btnLoadTeams_Click(object sender, EventArgs e)
+        {
+
+            GridViewTeams.DataSource = DbTools.GetTeams();
+            GridViewTeams.DataBind();
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -45,7 +49,7 @@ namespace FormulaOne_WebForm
                 // Attaching one onclick event for the entire row, so that it will
                 // fire SelectedIndexChanged, while we click anywhere on the row.
                 e.Row.Attributes["onclick"] =
-                  ClientScript.GetPostBackClientHyperlink(this.GridView1, "Select$" + e.Row.RowIndex);
+                  ClientScript.GetPostBackClientHyperlink(this.GridViewCountries, "Select$" + e.Row.RowIndex);
             }
         }
     }

@@ -42,21 +42,39 @@ namespace FormulaOne_WebForm
         protected global::System.Web.UI.WebControls.Button btnMostraDrivers;
 
         /// <summary>
-        /// Controllo GridView1.
+        /// Controllo btnMostraTeams.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button btnMostraTeams;
 
         /// <summary>
-        /// Controllo GridView2.
+        /// Controllo GridViewCountries.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView GridViewCountries;
+
+        /// <summary>
+        /// Controllo GridViewDrivers.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewDrivers;
+
+        /// <summary>
+        /// Controllo GridViewTeams.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewTeams;
     }
 }

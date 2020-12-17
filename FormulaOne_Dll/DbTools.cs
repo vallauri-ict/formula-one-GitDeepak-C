@@ -7,7 +7,7 @@ namespace FormulaOne_Dll
 {
     public class DbTools
     {
-        public const string WORKINGPATH = @"C:\data\";
+        public const string WORKINGPATH = @"C:\Data\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
 
         public void ExecuteSqlScript(string sqlScriptName)
@@ -162,7 +162,7 @@ namespace FormulaOne_Dll
                 dbCon.ConnectionString = CONNECTION_STRING;
                 Console.WriteLine("\nQuery data example:");
                 Console.WriteLine("==========================================\n");
-                string sql = "SELECT * FROM drivers";
+                string sql = "SELECT * FROM Drivers";
                 using (SqlCommand command = new SqlCommand(sql, dbCon))
                 {
                     dbCon.Open();
@@ -170,10 +170,37 @@ namespace FormulaOne_Dll
                     {
                         while (reader.Read())
                         {
-                            string number = reader.GetString(0);
+                            int number = reader.GetInt32(0);
                             string name = reader.GetString(1);
                             Console.WriteLine("(0) (1)", number, name);
                             retVal.Add(number + " - " + name);
+                        }
+                    }
+                }
+            }
+            return retVal;
+        }
+
+        public static List<string> GetTeams()
+        {
+            List<string> retVal = new List<string>();
+            using (SqlConnection dbCon = new SqlConnection())
+            {
+                dbCon.ConnectionString = CONNECTION_STRING;
+                Console.WriteLine("\nQuery data example:");
+                Console.WriteLine("==========================================\n");
+                string sql = "SELECT * FROM Teams";
+                using (SqlCommand command = new SqlCommand(sql, dbCon))
+                {
+                    dbCon.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            Console.WriteLine("(0) (1)", id, name);
+                            retVal.Add(id + " - " + name);
                         }
                     }
                 }
