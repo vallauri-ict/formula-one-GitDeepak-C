@@ -13,28 +13,37 @@ namespace FormulaOne_Dll
 
         public void ExecuteSqlScript(string sqlScriptName)
         {
-            var fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName);
+            var fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName + ".sql");
             fileContent = fileContent.Replace("\r\n", "");
             fileContent = fileContent.Replace("\r", "");
             fileContent = fileContent.Replace("\n", "");
             fileContent = fileContent.Replace("\t", "");
             var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
 
-            var con = new SqlConnection(CONNECTION_STRING);
-            var cmd = new SqlCommand("query", con);
-            con.Open(); int i = 0;
-            foreach (var query in sqlqueries)
+            SqlConnection con = new SqlConnection(CONNECTION_STRING);            
+
+            using (con)
             {
-                cmd.CommandText = query; i++;
-                try
+                con.Open();
+                SqlCommand cmd = new SqlCommand("query", con);
+                int i = 0;
+                bool errore = false;
+
+                foreach (var query in sqlqueries)
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = query; i++;
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException err)
+                    {
+                        errore = true;
+                        Console.WriteLine("Errore in esecuzione della query numero: " + i);
+                        Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
+                    }
                 }
-                catch (SqlException err)
-                {
-                    Console.WriteLine("Errore in esecuzione della query numero: " + i);
-                    Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
-                }
+                Console.WriteLine(errore ? "\nErrori durante l'esecuzione delle query!!" : "\nQuery eseguita correttamente!!");
             }
             con.Close();
         }
