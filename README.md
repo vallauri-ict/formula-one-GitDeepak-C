@@ -18,7 +18,7 @@ Il database contiene le seguenti tabelle:
 - Countries, contenente i dati delle varie nazioni
 - Circuits, contiene i dati dei circuiti
 - Races, memorizza i dati delle gare
-- RacePoints, per ogni memorizza i punti per posizione
+- RacePoints, per ogni gara memorizza i punti in base alla posizione
 - Score, memorizza i punteggi della stagione
 
 ## Realazioni tabelle
@@ -28,11 +28,11 @@ Il database contiene le seguenti tabelle:
 
 - Teams --> Countries, anche i team hanno la loro nazionalità, il legame relazionale è (1,1), ad ogni team corrisponde solamente una nazione
 
-- Countries --> Circuits, stessa questione dei 2 precedenti
+- Countries --> Circuits, ogni circuito ha un'uncia nazione mentre una nazione può avere più circuiti, quindi abbiamo una relazione (1,n)
 
 - Races --> Circuits, ogni gara(GP) viene corso su un solo circuito, ma un circuito può ospitare più gare, quindi la relazione è (1,n)
 
-- Races --> RacesPoints, RacesPoints è una tabella intermediaria che utilizzo per tenere traccia dei punteggi di ciascuna gara, i punteggi totali invece sono memorizzati all'interno della tabella Scores in base a ciascun driver ordinati per posizione(crescente)
+- Races --> RacesPoints, RacesPoints è una tabella intermediaria che viene utilizzata per tenere traccia dei punteggi di ciascuna gara, i punteggi totali invece sono memorizzati all'interno della tabella Scores in base a ciascun driver ordinati per posizione(crescente)
 
 ## Software neccesari:
 * Visual Studio
