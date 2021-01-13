@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[Teams] (
   [name] varchar(30),
   [fullTeamName] varchar(255),
   [base] varchar(255),
-  [extCountry] varchar(2),
+  [extCountry] varchar(2) NOT NULL default '',
   [teamChief] varchar(64),
   [technicalChief] varchar(64),
   [powerUnit] varchar(64),

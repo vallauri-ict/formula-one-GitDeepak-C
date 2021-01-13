@@ -20,10 +20,13 @@ namespace FormulaOne_Console
                 Console.WriteLine("| 3 - Create Drivers");
                 Console.WriteLine("| 4 - Create Circuits");
                 Console.WriteLine("| 5 - Create Races");
+                Console.WriteLine("| 6 - Create Foreign Keys");
+                Console.WriteLine("| 7 - Delete Foreign Keys");
                 Console.WriteLine("------------------");
                 Console.WriteLine("| B - Backup Database");
                 Console.WriteLine("| R - Restore Database");
                 Console.WriteLine("| D - Drop Table");
+                Console.WriteLine("| C - Clear Database");
                 Console.WriteLine("------------------");
                 Console.WriteLine("| X - EXIT\n");
                 scelta = Console.ReadKey(true).KeyChar;
@@ -43,7 +46,26 @@ namespace FormulaOne_Console
                         DbTools.ExecuteSqlScript("Circuits");
                         break;
                     case '5':
+                        Console.WriteLine("Creating Races Table....");
                         DbTools.ExecuteSqlScript("Races");
+
+                        Console.WriteLine("\nCreating RacesPoints Table....");
+                        DbTools.ExecuteSqlScript("RacesPoints");
+
+                        Console.WriteLine("\nCreating Scores Table....");
+                        DbTools.ExecuteSqlScript("Scores");
+                        break;
+                    case '6':
+                        if (DbTools.getTables().Count == 1)
+                            Console.WriteLine("Database is empty!!");
+                        else
+                            DbTools.ExecuteSqlScript("setConstraints");
+                        break;
+                    case '7':
+                        if (DbTools.getTables().Count == 1)
+                            Console.WriteLine("Database is empty!!");
+                        else
+                            DbTools.ExecuteSqlScript("deleteConstraints");
                         break;
                     case 'B':
                     case 'b':
@@ -55,14 +77,23 @@ namespace FormulaOne_Console
                         break;
                     case 'D':
                     case 'd':
-                        Console.WriteLine("Tables present in db: ");
-                        foreach (var item in DbTools.getTables())
-                            if(!item.StartsWith("-"))
-                                Console.WriteLine("--" + item);
+                        if (DbTools.getTables().Count == 1)
+                            Console.WriteLine("You can't drop a table because the database is empty!!");
+                        else
+                        {
+                            Console.WriteLine("Tables present in db: ");
+                            foreach (var item in DbTools.getTables())
+                                if (!item.StartsWith("-"))
+                                    Console.WriteLine("--" + item);
 
-                        Console.Write("\nInsert table name to drop: ");
-                        string table = Console.ReadLine();
-                        DbTools.DropTable(table);
+                            Console.Write("\nInsert table name to drop: ");
+                            string table = Console.ReadLine();
+                            DbTools.DropTable(table);
+                        }
+                        break;
+                    case 'C':
+                    case 'c':
+                        DbTools.clearDb();
                         break;
                     default:
                         if (scelta != 'X' && scelta != 'x') Console.WriteLine("\nUncorrect Choice - Try Again\n");

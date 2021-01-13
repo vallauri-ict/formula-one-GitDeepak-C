@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[Circuits] (
     [name]       VARCHAR (256) NOT NULL,
     [length]     INT           NOT NULL,
     [nLaps]      INT           NOT NULL,
-    [extCountry] CHAR (2)      NOT NULL,
+    [extCountry] VARCHAR (2)   NOT NULL default '',
     [recordLap]  VARCHAR (30)  DEFAULT (N'') NULL,
     [imgCircuit]        VARCHAR (512) NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)

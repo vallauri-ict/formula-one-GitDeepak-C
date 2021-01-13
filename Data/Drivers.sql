@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[Drivers]
 	[lastname] VARCHAR(128) NOT NULL, 
 	[dob] DATE NOT NULL, 
 	[placeOfBirth] VARCHAR(255) NOT NULL, 
-	[extCountry] CHAR(2) NOT NULL,
+	[extCountry] VARCHAR(2) NOT NULL default '',
 	[biography] VARCHAR (4096) NOT NULL,
 	[imgDriver] VARCHAR (512) NOT NULL,
 	[podiums] INT,

@@ -40,7 +40,10 @@ namespace FormulaOne_Dll
                     {
                         if (err.Number == 2714)
                         {
-                            Console.WriteLine("Table already exists!!");
+                            if (query.StartsWith("ALTER"))
+                                Console.WriteLine("Foreign keys already exists!!");
+                            else
+                                Console.WriteLine("Table already exists!!");
                             break;
                         }
                         else
@@ -74,6 +77,34 @@ namespace FormulaOne_Dll
             con.Close();
 
             Console.WriteLine(errore ? "\nErrori durante l'esecuzione delle query!!" : "\nTabella eliminata correttamente!!");
+        }
+
+        public void clearDb()
+        {
+            var con = new SqlConnection(CONNECTION_STRING);
+            con.Open();
+
+            List<string> tables = getTables();
+            bool errore = false;
+            foreach (string table in tables)
+            {
+                if (!table.StartsWith("-"))
+                {
+                    var cmd = new SqlCommand("Drop Table " + table + ";", con);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException err)
+                    {
+                        errore = true;
+                        Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
+                    }
+                }
+            }
+            con.Close();
+
+            Console.WriteLine(errore ? "Errori durante l'esecuzione delle query!!" : "Database pulito correttamente!!");
         }
 
         public static void BackupDb()
@@ -125,7 +156,7 @@ namespace FormulaOne_Dll
                 using (SqlConnection con = new SqlConnection(CONNECTION_STRING))
                 {
                     string sqlStmt = "";
-                    string[] tableNames = { "Country", "Driver", "Team" };
+                    List<string> tableNames = getTables();
 
                     foreach (string table in tableNames)
                     {
