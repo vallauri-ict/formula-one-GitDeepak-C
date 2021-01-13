@@ -1,6 +1,5 @@
 ﻿using FormulaOne_Dll;
 using System;
-using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -37,10 +36,27 @@ namespace FormulaOne_WebForm
             }
         }
 
+        protected void datagrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                //FillGrid();
+                GridViewDati.PageIndex = e.NewPageIndex;
+                GridViewDati.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         protected void cmbDb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GridViewDati.DataSource = DbTools.GetDaTa(cmbDb.Text);
-            GridViewDati.DataBind();
+            if (!cmbDb.Text.StartsWith("-"))
+            {
+                GridViewDati.DataSource = DbTools.GetDaTa(cmbDb.Text);
+                GridViewDati.DataBind();
+            }
         }
     }
 }
