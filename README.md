@@ -22,6 +22,8 @@ Il database contiene le seguenti tabelle:
 - Score, memorizza i punteggi della stagione
 
 ## Realazioni tabelle
+![imgFigurativa](Data/Db_diagram.png)
+
 - Teams --> Drivers, ogni team ha 2 Drivers mentre 1 driver solo 1 team, quindi abbiamo una relazione (1,2)
 
 - Drivers --> Countries, ogni driver ha ovviamente un'unica nazionalità, quindi c'e un legame relazionale di (1,1)
