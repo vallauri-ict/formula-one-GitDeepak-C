@@ -10,6 +10,7 @@ namespace FormulaOne_Console
         static void Main(string[] args)
         {
             char scelta = ' ';
+            bool isConstraintPresent = false;
             do
             {
                 Console.WriteLine("\n-----------------------------------");
@@ -23,6 +24,7 @@ namespace FormulaOne_Console
                 Console.WriteLine("| 6 - Create Foreign Keys");
                 Console.WriteLine("| 7 - Delete Foreign Keys");
                 Console.WriteLine("------------------");
+                Console.WriteLine("| A - Show Tables");
                 Console.WriteLine("| B - Backup Database");
                 Console.WriteLine("| R - Restore Database");
                 Console.WriteLine("| D - Drop Table");
@@ -57,15 +59,41 @@ namespace FormulaOne_Console
                         break;
                     case '6':
                         if (DbTools.getTables().Count == 1)
-                            Console.WriteLine("Database is empty!!");
+                            Console.WriteLine("Cannot create foreign keys because the database is empty!!");
                         else
+                        {
                             DbTools.ExecuteSqlScript("setConstraints");
+                            if(!isConstraintPresent)
+                                Console.WriteLine("Foreign Keys created!!");
+                            isConstraintPresent = true;                            
+                        }
                         break;
                     case '7':
                         if (DbTools.getTables().Count == 1)
                             Console.WriteLine("Database is empty!!");
                         else
-                            DbTools.ExecuteSqlScript("deleteConstraints");
+                        {
+                            if (isConstraintPresent)
+                            {
+                                DbTools.ExecuteSqlScript("deleteConstraints");
+                                isConstraintPresent = false;
+                                Console.WriteLine("Foreign Keys deleted!!");
+                            }
+                            else
+                                Console.WriteLine("There aren't foreign keys to delete!!");
+                        }
+                        break;
+                    case 'A':
+                    case 'a':
+                        if (DbTools.getTables().Count == 1)
+                            Console.WriteLine("Database is empty!!");
+                        else
+                        {
+                            Console.WriteLine("Tables present in db: ");
+                            foreach (var item in DbTools.getTables())
+                                if (!item.StartsWith("-"))
+                                    Console.WriteLine("--" + item);
+                        }
                         break;
                     case 'B':
                     case 'b':
@@ -93,7 +121,19 @@ namespace FormulaOne_Console
                         break;
                     case 'C':
                     case 'c':
-                        DbTools.clearDb();
+                        if (DbTools.getTables().Count == 1)
+                            Console.WriteLine("You can't drop a table because the database is empty!!");
+                        else
+                        {
+                            if (isConstraintPresent)
+                            {
+                                DbTools.ExecuteSqlScript("deleteConstraints");
+                                isConstraintPresent = false;
+                                DbTools.clearDb();
+                            }
+                            else
+                                DbTools.clearDb();
+                        }
                         break;
                     default:
                         if (scelta != 'X' && scelta != 'x') Console.WriteLine("\nUncorrect Choice - Try Again\n");

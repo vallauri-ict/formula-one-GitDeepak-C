@@ -1,9 +1,6 @@
 ALTER TABLE Drivers DROP CONSTRAINT FK_Drivers_Countries;
 ALTER TABLE Teams DROP CONSTRAINT FK_Teams_Countries;
 ALTER TABLE Teams DROP CONSTRAINT FK_Teams_Drivers_First;
-ALTER TABLE Teams DROP CONSTRAINT FK_Teams_Drivers_Second;
 ALTER TABLE Circuits DROP CONSTRAINT FK_Circuits_Countries;
-ALTER TABLE Races DROP CONSTRAINT FK_Race_Circuits;
-ALTER TABLE RacesPoints DROP CONSTRAINT FK_Results_Drivers;
-ALTER TABLE RacesPoints DROP CONSTRAINT FK_Results_Scores;
-ALTER TABLE RacesPoints DROP CONSTRAINT FK_Results_Races;
+ALTER TABLE Races DROP CONSTRAINT FK_Races_Circuits;
+ALTER TABLE RacesPoints DROP CONSTRAINT FK_RacesPoints_Races;

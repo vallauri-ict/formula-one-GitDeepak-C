@@ -1,7 +1,7 @@
 CREATE TABLE [Races] (
   [idRace] int identity(1, 1) PRIMARY KEY NOT Null,
   [name] nvarchar(255),
-  [extCircuit] INT,
+  [extCircuit] INT NOT Null,
   [date] datetime
 )
 
