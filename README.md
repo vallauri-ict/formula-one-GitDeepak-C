@@ -3,10 +3,12 @@
 
 ## Descrizione
 La soluzione comprende 3 progetti:
-* Progetto Console, in cui ci occupa della gestione delle operazioni sul database
+* Progetto Console, in cui ci si occupa della gestione delle operazioni sul database
+
 ![imgFigurativa](Data/imgEsempioConsole.PNG)
 * Progetto DLL, contenente le varie classi che vengono utilizzate dagli altri progetti
 * Progetto WebForm, in cui viene programmata la parte web con l'utilizzo di ASP.net
+
 ![imgFigurativa](Data/imgEsempioWebForm.png)
 
 ## Software neccesari:
