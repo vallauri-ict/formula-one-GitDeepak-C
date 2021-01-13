@@ -4,4 +4,4 @@ CREATE TABLE [Races] (
   [extCircuit] varchar(2),
   [date] datetime
 )
-GO
+

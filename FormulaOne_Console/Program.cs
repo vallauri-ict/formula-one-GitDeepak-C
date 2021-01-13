@@ -23,6 +23,7 @@ namespace FormulaOne_Console
                 Console.WriteLine("------------------");
                 Console.WriteLine("| B - Backup Database");
                 Console.WriteLine("| R - Restore Database");
+                Console.WriteLine("| D - Drop Table");
                 Console.WriteLine("------------------");
                 Console.WriteLine("| X - EXIT\n");
                 scelta = Console.ReadKey(true).KeyChar;
@@ -45,31 +46,29 @@ namespace FormulaOne_Console
                         DbTools.ExecuteSqlScript("Races");
                         break;
                     case 'B':
+                    case 'b':
                         DbTools.BackupDb();
                         break;
                     case 'R':
+                    case 'r':
                         DbTools.RestoreDb();
+                        break;
+                    case 'D':
+                    case 'd':
+                        Console.WriteLine("Tables present in db: ");
+                        foreach (var item in DbTools.getTables())
+                            if(!item.StartsWith("-"))
+                                Console.WriteLine("--" + item);
+
+                        Console.Write("\nInsert table name to drop: ");
+                        string table = Console.ReadLine();
+                        DbTools.DropTable(table);
                         break;
                     default:
                         if (scelta != 'X' && scelta != 'x') Console.WriteLine("\nUncorrect Choice - Try Again\n");
                         break;
                 }
             } while (scelta != 'X' && scelta != 'x');
-        }
-
-        static bool callExecuteSqlScript(string scriptName)
-        {
-            try
-            {
-                DbTools.ExecuteSqlScript(scriptName + ".sql");
-                Console.WriteLine("\nCreate " + scriptName + " - SUCCESS\n");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("\nCreate " + scriptName + " - ERROR: " + ex.Message + "\n");
-                return false;
-            }
         }
     }
 }

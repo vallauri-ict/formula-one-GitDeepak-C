@@ -8,7 +8,6 @@ namespace FormulaOne_WebForm
 {
     public partial class Default : System.Web.UI.Page
     {
-        string[] vetDb = { "Drivers", "Countries", "Teams" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -16,7 +15,7 @@ namespace FormulaOne_WebForm
                 //elaborazioni da eseguire quando la pagina deve essere caricata
                 //lblMessaggio.Text = "Digita username e password, poi premi Invia";
                 //lblMessaggio.Text = "Benvenuto, per visualizzare le nazioni, premere il pulsante Mostra Nazioni!!";
-                cmbDb.DataSource = vetDb;
+                cmbDb.DataSource = DbTools.getTables();
                 cmbDb.DataBind();
             }
             else

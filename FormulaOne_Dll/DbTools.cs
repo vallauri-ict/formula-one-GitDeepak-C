@@ -38,12 +38,20 @@ namespace FormulaOne_Dll
                     }
                     catch (SqlException err)
                     {
-                        errore = true;
-                        Console.WriteLine("Errore in esecuzione della query numero: " + i);
-                        Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
+                        if (err.Number == 2714)
+                        {
+                            Console.WriteLine("Table already exists!!");
+                            break;
+                        }
+                        else
+                        {
+                            errore = true;
+                            Console.WriteLine("Errore in esecuzione della query numero: " + i);
+                            Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
+                        }
                     }
                 }
-                Console.WriteLine(errore ? "\nErrori durante l'esecuzione delle query!!" : "\nQuery eseguita correttamente!!");
+                if(i != 1) Console.WriteLine(errore ? "Errori durante l'esecuzione delle query!!" : "Query eseguita correttamente!!");
             }
             con.Close();
         }
@@ -53,15 +61,19 @@ namespace FormulaOne_Dll
             var con = new SqlConnection(CONNECTION_STRING);
             var cmd = new SqlCommand("Drop Table " + tableName + ";", con);
             con.Open();
+            bool errore = false;
             try
             {
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException err)
             {
+                errore = true;
                 Console.WriteLine("\tErrore SQL: " + err.Number + " - " + err.Message);
             }
             con.Close();
+
+            Console.WriteLine(errore ? "\nErrori durante l'esecuzione delle query!!" : "\nTabella eliminata correttamente!!");
         }
 
         public static void BackupDb()
@@ -135,6 +147,25 @@ namespace FormulaOne_Dll
             {
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        public static List<string> getTables()
+        {
+            DataTable retVal = new DataTable();
+            SqlConnection con = new SqlConnection(CONNECTION_STRING);
+            string sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(retVal);
+
+            List<string> retLst = new List<string>();
+            retLst.Add("--- Selezionare la tabella desiderata ---");
+            foreach (DataRow item in retVal.Rows)
+                retLst.Add(item["TABLE_NAME"].ToString());
+
+            return retLst;
         }
 
         public static DataTable GetDaTa(string dbName)
