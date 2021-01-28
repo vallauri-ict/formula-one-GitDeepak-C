@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ToWebApi_Project.Models
 {
-    public class toDoContext : DbContext
+    public class ToDoContext : DbContext
     {
-        public toDoContext(DbContextOptions<toDoContext> options)
+        public ToDoContext(DbContextOptions<ToDoContext> options)
             : base(options)
         {
         }
 
-        public DbSet<toDoItem> TodoItems { get; set; }
+        public DbSet<ToDoItem> TodoItems { get; set; }
     }
 }
