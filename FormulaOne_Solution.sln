@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_Console", "Formu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_WebForm", "FormulaOne_WebForm\FormulaOne_WebForm.csproj", "{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToWebApi_Project", "ToWebApi_Project\ToWebApi_Project.csproj", "{22F1867E-F706-4F86-8CA4-4481D0EA541B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToWebApi_Project", "ToWebApi_Project\ToWebApi_Project.csproj", "{22F1867E-F706-4F86-8CA4-4481D0EA541B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_WebServices", "FormulaOne_WebServices\FormulaOne_WebServices.csproj", "{723022DF-2B70-4187-98D4-71FD97EF602A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723022DF-2B70-4187-98D4-71FD97EF602A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723022DF-2B70-4187-98D4-71FD97EF602A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723022DF-2B70-4187-98D4-71FD97EF602A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723022DF-2B70-4187-98D4-71FD97EF602A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

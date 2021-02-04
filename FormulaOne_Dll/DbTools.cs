@@ -225,6 +225,52 @@ namespace FormulaOne_Dll
             return dt;
         }
 
+        public List<Country> GetListCountry()
+        {
+            List<Country> retVal = new List<Country>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM Country;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string countryCode = reader.GetString(0);
+                    string countryName = reader.GetString(1);
+                    Country c = new Country(countryCode, countryName);
+                    retVal.Add(c);
+                }
+            }
+            return retVal;
+        }
+
+        public List<Team> GetListTeam()
+        {
+            List<Team> retVal = new List<Team>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM Country;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string countryCode = reader.GetString(0);
+                    string countryName = reader.GetString(1);
+                    Team t = new Team();
+                    retVal.Add(t);
+                }
+            }
+            return retVal;
+        }
+
         public static List<string> GetDrivers()
         {
             List<string> retVal = new List<string>();
