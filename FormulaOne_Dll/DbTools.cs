@@ -232,7 +232,7 @@ namespace FormulaOne_Dll
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
                 dbConn.Open();
-                string sql = "SELECT * FROM Country;";
+                string sql = "SELECT * FROM Countries;";
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -255,16 +255,29 @@ namespace FormulaOne_Dll
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
                 dbConn.Open();
-                string sql = "SELECT * FROM Country;";
+                string sql = "SELECT * FROM Teams;";
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    string countryCode = reader.GetString(0);
-                    string countryName = reader.GetString(1);
-                    Team t = new Team();
+                    int teamId = Convert.ToInt32(reader.GetString(0));
+                    string teamName = reader.GetString(1);
+                    string fullTeamName = reader.GetString(2);
+                    string teamBase = reader.GetString(3);
+                    string extCountry = reader.GetString(4);
+                    string teamChief = reader.GetString(5);
+                    string techCheif = reader.GetString(6);
+                    string powerUint = reader.GetString(7);
+                    string chassis = reader.GetString(8);
+                    string firstTeamEntry = reader.GetString(9);
+                    int worldCham = Convert.ToInt32(reader.GetString(10));
+                    int extFirstDriver = Convert.ToInt32(reader.GetString(11));
+                    int extSecondDriver = Convert.ToInt32(reader.GetString(12));
+                    string imgLogo = reader.GetString(13);
+                    string imgCar = reader.GetString(14);
+                    Team t = new Team(teamId, teamName, fullTeamName, teamBase, extCountry, teamChief, techCheif, powerUint, chassis, firstTeamEntry, worldCham, extFirstDriver, extSecondDriver, imgLogo, imgCar);
                     retVal.Add(t);
                 }
             }
