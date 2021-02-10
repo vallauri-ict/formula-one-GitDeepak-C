@@ -9,13 +9,16 @@ namespace FormulaOne_Dll
     public class Country
     {
 
-        public string countryCode { get; set; }
-        public string countryName { get; set; }
+        private string countryCode;
+        private string countryName;
 
         public Country(string countryCode, string countryName)
         {
-            this.countryCode = countryCode;
-            this.countryName = countryName;
+            this.CountryCode = countryCode;
+            this.CountryName = countryName;
         }
+
+        public string CountryCode { get => countryCode; set => countryCode = value; }
+        public string CountryName { get => countryName; set => countryName = value; }
     }
 }

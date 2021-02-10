@@ -248,6 +248,41 @@ namespace FormulaOne_Dll
             return retVal;
         }
 
+        public List<Driver> GetListDriver()
+        {
+            List<Driver> retVal = new List<Driver>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM Drivers;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int driverNumber = Convert.ToInt32(reader.GetString(0));
+                    string firstName = reader.GetString(1);
+                    string lastName = reader.GetString(2);
+                    DateTime dob = Convert.ToDateTime(reader.GetString(3));
+                    string placeOfBirth = reader.GetString(4);
+                    string extCountry = reader.GetString(5);
+                    string biography = reader.GetString(6);
+                    string imgDriver = reader.GetString(7);
+                    int podiums = Convert.ToInt32(reader.GetString(8));
+                    int totalPoints = Convert.ToInt32(reader.GetString(9));
+                    int grandPrix = Convert.ToInt32(reader.GetString(10));
+                    int worldChampionships = Convert.ToInt32(reader.GetString(11));
+                    string highestRaceFinish = reader.GetString(12);
+                    int highestGridFinish = Convert.ToInt32(reader.GetString(13));
+                    Driver d = new Driver(driverNumber, firstName, lastName, dob, placeOfBirth, extCountry, biography, imgDriver, podiums, totalPoints, grandPrix, worldChampionships, highestRaceFinish, highestGridFinish);
+                    retVal.Add(d);
+                }
+            }
+            return retVal;
+        }
+
         public List<Team> GetListTeam()
         {
             List<Team> retVal = new List<Team>();
