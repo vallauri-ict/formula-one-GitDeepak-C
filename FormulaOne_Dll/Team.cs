@@ -17,7 +17,7 @@ namespace FormulaOne_Dll
         private string technicalChief;
         private string powerUnit;
         private string chassis;
-        private string firstTeamEntry;
+        private int firstTeamEntry;
         private int worldChampionships;
         private int extFirstDriver;
         private int extSecondDriver;
@@ -36,7 +36,7 @@ namespace FormulaOne_Dll
             string technicalChief,
             string powerUnit,
             string chassis, 
-            string firstTimeEntry,
+            int teamEntry,
             int worldChampionships,
             int extFirstDruver,
             int extSecondDriver,
@@ -53,7 +53,7 @@ namespace FormulaOne_Dll
             this.TechnicalChief = technicalChief;
             this.PowerUnit = powerUnit;
             this.Chassis = chassis;
-            this.FirstTeamEntry = firstTimeEntry;
+            this.FirstTeamEntry = teamEntry;
             this.WorldChampionships = worldChampionships;
             this.ExtFirstDriver = extFirstDriver;
             this.ExtSecondDriver = extSecondDriver;
@@ -70,7 +70,7 @@ namespace FormulaOne_Dll
         public string TechnicalChief { get => technicalChief; set => technicalChief = value; }
         public string PowerUnit { get => powerUnit; set => powerUnit = value; }
         public string Chassis { get => chassis; set => chassis = value; }
-        public string FirstTeamEntry { get => firstTeamEntry; set => firstTeamEntry = value; }
+        public int FirstTeamEntry { get => firstTeamEntry; set => firstTeamEntry = value; }
         public int WorldChampionships { get => worldChampionships; set => worldChampionships = value; }
         public int ExtFirstDriver { get => extFirstDriver; set => extFirstDriver = value; }
         public int ExtSecondDriver { get => extSecondDriver; set => extSecondDriver = value; }

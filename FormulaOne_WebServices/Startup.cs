@@ -31,6 +31,7 @@ namespace FormulaOne_WebServices
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.MapControllers();
             });
         }
     }

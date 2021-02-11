@@ -262,20 +262,20 @@ namespace FormulaOne_Dll
 
                 while (reader.Read())
                 {
-                    int driverNumber = Convert.ToInt32(reader.GetString(0));
+                    int driverNumber = reader.GetInt32(0);
                     string firstName = reader.GetString(1);
                     string lastName = reader.GetString(2);
-                    DateTime dob = Convert.ToDateTime(reader.GetString(3));
+                    DateTime dob = reader.GetDateTime(3);
                     string placeOfBirth = reader.GetString(4);
                     string extCountry = reader.GetString(5);
                     string biography = reader.GetString(6);
                     string imgDriver = reader.GetString(7);
-                    int podiums = Convert.ToInt32(reader.GetString(8));
-                    int totalPoints = Convert.ToInt32(reader.GetString(9));
-                    int grandPrix = Convert.ToInt32(reader.GetString(10));
-                    int worldChampionships = Convert.ToInt32(reader.GetString(11));
+                    int podiums = reader.GetInt32(8);
+                    int totalPoints = reader.GetInt32(9);
+                    int grandPrix = reader.GetInt32(10);
+                    int worldChampionships = reader.GetInt32(11);
                     string highestRaceFinish = reader.GetString(12);
-                    int highestGridFinish = Convert.ToInt32(reader.GetString(13));
+                    int highestGridFinish = reader.GetInt32(13);
                     Driver d = new Driver(driverNumber, firstName, lastName, dob, placeOfBirth, extCountry, biography, imgDriver, podiums, totalPoints, grandPrix, worldChampionships, highestRaceFinish, highestGridFinish);
                     retVal.Add(d);
                 }
@@ -297,7 +297,7 @@ namespace FormulaOne_Dll
 
                 while (reader.Read())
                 {
-                    int teamId = Convert.ToInt32(reader.GetString(0));
+                    int teamId = reader.GetInt32(0);
                     string teamName = reader.GetString(1);
                     string fullTeamName = reader.GetString(2);
                     string teamBase = reader.GetString(3);
@@ -306,10 +306,10 @@ namespace FormulaOne_Dll
                     string techCheif = reader.GetString(6);
                     string powerUint = reader.GetString(7);
                     string chassis = reader.GetString(8);
-                    string firstTeamEntry = reader.GetString(9);
-                    int worldCham = Convert.ToInt32(reader.GetString(10));
-                    int extFirstDriver = Convert.ToInt32(reader.GetString(11));
-                    int extSecondDriver = Convert.ToInt32(reader.GetString(12));
+                    int firstTeamEntry = reader.GetInt32(9);
+                    int worldCham = reader.GetInt32(10);
+                    int extFirstDriver = reader.GetInt32(11);
+                    int extSecondDriver = reader.GetInt32(12);
                     string imgLogo = reader.GetString(13);
                     string imgCar = reader.GetString(14);
                     Team t = new Team(teamId, teamName, fullTeamName, teamBase, extCountry, teamChief, techCheif, powerUint, chassis, firstTeamEntry, worldCham, extFirstDriver, extSecondDriver, imgLogo, imgCar);
