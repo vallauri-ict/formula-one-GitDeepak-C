@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace FormulaOne_WebServices
 {
-    [Route("api/[controller]")]
+    [Route("api/country")]
     [ApiController]
     public class countryController : ControllerBase
     {

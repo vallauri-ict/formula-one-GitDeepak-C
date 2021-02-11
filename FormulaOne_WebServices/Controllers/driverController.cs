@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FormulaOne_WebServices.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/driver")]
     [ApiController]
     public class driverController : ControllerBase
     {
