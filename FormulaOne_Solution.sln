@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormulaOne_ConsoleProject", "FormulaOne_ConsoleProject\FormulaOne_ConsoleProject.csproj", "{EA28D5B4-8144-432B-80A9-27DFB607A77D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_Dll", "FormulaOne_Dll\FormulaOne_Dll.csproj", "{914B9B95-7205-4DB8-BCC1-8EC3DAAE4DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOneDll", "FormulaOneDll\FormulaOneDll.csproj", "{713B6779-43BB-4F30-AEE4-E5189E1757CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_Console", "FormulaOne_Console\FormulaOne_Console.csproj", "{E72A2BB8-076F-47D1-8768-E4F233606589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaOne_WebForm", "FormulaOne_WebForm\FormulaOne_WebForm.csproj", "{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToWebApi_Project", "ToWebApi_Project\ToWebApi_Project.csproj", "{22F1867E-F706-4F86-8CA4-4481D0EA541B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormulaOne_WebServices", "FormulaOne_WebServices\FormulaOne_WebServices.csproj", "{773A934D-13B5-4F17-BB44-E0E5E512D857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +19,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EA28D5B4-8144-432B-80A9-27DFB607A77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA28D5B4-8144-432B-80A9-27DFB607A77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA28D5B4-8144-432B-80A9-27DFB607A77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA28D5B4-8144-432B-80A9-27DFB607A77D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{713B6779-43BB-4F30-AEE4-E5189E1757CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{713B6779-43BB-4F30-AEE4-E5189E1757CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{713B6779-43BB-4F30-AEE4-E5189E1757CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{713B6779-43BB-4F30-AEE4-E5189E1757CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{914B9B95-7205-4DB8-BCC1-8EC3DAAE4DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{914B9B95-7205-4DB8-BCC1-8EC3DAAE4DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{914B9B95-7205-4DB8-BCC1-8EC3DAAE4DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{914B9B95-7205-4DB8-BCC1-8EC3DAAE4DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72A2BB8-076F-47D1-8768-E4F233606589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72A2BB8-076F-47D1-8768-E4F233606589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72A2BB8-076F-47D1-8768-E4F233606589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72A2BB8-076F-47D1-8768-E4F233606589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB0A2C6-D1A5-4234-B38A-B5BA1916E4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F1867E-F706-4F86-8CA4-4481D0EA541B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{773A934D-13B5-4F17-BB44-E0E5E512D857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773A934D-13B5-4F17-BB44-E0E5E512D857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773A934D-13B5-4F17-BB44-E0E5E512D857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773A934D-13B5-4F17-BB44-E0E5E512D857}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2AE1B249-5F77-4A14-9FD4-E9BD43F98027}
+		SolutionGuid = {F2CF16DA-DC14-4673-8590-30FCF1ED5B71}
 	EndGlobalSection
 EndGlobal
