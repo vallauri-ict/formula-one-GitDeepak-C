@@ -20,7 +20,7 @@ namespace FormulaOne_Dll
             fileContent = fileContent.Replace("\t", "");
             var sqlqueries = fileContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
 
-            SqlConnection con = new SqlConnection(CONNECTION_STRING);            
+            SqlConnection con = new SqlConnection(CONNECTION_STRING);
 
             using (con)
             {
@@ -54,7 +54,7 @@ namespace FormulaOne_Dll
                         }
                     }
                 }
-                if(i != 1) Console.WriteLine(errore ? "Errori durante l'esecuzione delle query!!" : "Query eseguita correttamente!!");
+                if (i != 1) Console.WriteLine(errore ? "Errori durante l'esecuzione delle query!!" : "Query eseguita correttamente!!");
             }
             con.Close();
         }
@@ -221,7 +221,7 @@ namespace FormulaOne_Dll
             {
                 throw new Exception(ex.Message);
             }
-            
+
             return dt;
         }
 
@@ -243,6 +243,59 @@ namespace FormulaOne_Dll
                     string countryName = reader.GetString(1);
                     Country c = new Country(countryCode, countryName);
                     retVal.Add(c);
+                }
+            }
+            return retVal;
+        }
+
+        public List<Circuit> GetListCircuits()
+        {
+            List<Circuit> retVal = new List<Circuit>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM Circuits;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    int length = reader.GetInt32(2);
+                    int nLaps = reader.GetInt32(3);
+                    string extCountry = reader.GetString(4);
+                    string recordLap = reader.GetString(5);
+                    string imgCircuit = reader.GetString(6);
+                    Circuit c = new Circuit(id, name, length, nLaps, extCountry, recordLap, imgCircuit);
+                    retVal.Add(c);
+                }
+            }
+            return retVal;
+        }
+
+        public List<Race> GetListRaces()
+        {
+            List<Race> retVal = new List<Race>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM Races;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int idRace = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    int extCircuit = reader.GetInt32(2);
+                    DateTime data = reader.GetDateTime(3);
+                    Race r = new Race(idRace, name, extCircuit, data);
+                    retVal.Add(r);
                 }
             }
             return retVal;
