@@ -326,6 +326,32 @@ namespace FormulaOne_Dll
             return retVal;
         }
 
+        public List<RacePoints> GetListRacePoints()
+        {
+            List<RacePoints> retVal = new List<RacePoints>();
+            using (SqlConnection dbConn = new SqlConnection())
+            {
+                dbConn.ConnectionString = CONNECTION_STRING;
+                dbConn.Open();
+                string sql = "SELECT * FROM RacesPoints;";
+                SqlCommand cmd = new SqlCommand(sql, dbConn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    int extDriver = reader.GetInt32(1);
+                    int extPos = reader.GetInt32(2);
+                    int extRace = reader.GetInt32(3);
+                    string fastestLap = reader.GetString(4);
+                    RacePoints r = new RacePoints(id, extDriver, extPos, extRace, fastestLap);
+                    retVal.Add(r);
+                }
+            }
+            return retVal;
+        }
+
         public List<Driver> GetListDriver()
         {
             List<Driver> retVal = new List<Driver>();
