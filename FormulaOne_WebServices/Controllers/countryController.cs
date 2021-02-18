@@ -10,12 +10,13 @@ namespace FormulaOne_WebServices
     [ApiController]
     public class countryController : ControllerBase
     {
+        DbTools db = new DbTools();
         // GET: api/<countryController>
         [HttpGet]
         public IEnumerable<Country> Get()
         {
-            DbTools db = new DbTools();
-            return db.GetListCountry();
+            db.GetListCountry();
+            return db.Countries.Values;
         }
 
         // GET api/<countryController>/5

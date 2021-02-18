@@ -10,12 +10,13 @@ namespace FormulaOne_WebServices
     [ApiController]
     public class teamController : ControllerBase
     {
+        DbTools db = new DbTools();
         // GET: api/<teamController>
         [HttpGet]
         public IEnumerable<Team> Get()
         {
-            DbTools db = new DbTools();
-            return db.GetListTeam();
+            db.GetListTeam();
+            return db.Teams.Values;
         }
 
         // GET api/<teamController>/5

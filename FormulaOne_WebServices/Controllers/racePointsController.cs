@@ -10,12 +10,13 @@ namespace FormulaOne_WebServices.Controllers
     [ApiController]
     public class racePointsController : ControllerBase
     {
+        DbTools db = new DbTools();
         // GET: api/<racePointsController>
         [HttpGet]
         public IEnumerable<RacePoints> Get()
         {
-            DbTools db = new DbTools();
-            return db.GetListRacePoints();
+            db.GetListRacePoints();
+            return db.RacesPoints.Values;
         }
 
         // GET api/<racePointsController>/5

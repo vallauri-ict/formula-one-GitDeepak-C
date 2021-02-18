@@ -11,6 +11,22 @@ namespace FormulaOne_Dll
         public const string WORKINGPATH = @"C:\Data\";
         private const string CONNECTION_STRING = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + WORKINGPATH + @"FormulaOne.mdf;Integrated Security=True";
 
+        private Dictionary<int, Driver> drivers;
+        private Dictionary<string, Country> countries;
+        private Dictionary<int, Team> teams;
+        private Dictionary<int, Circuit> circuits;
+        private Dictionary<int, RacePoints> racesPoints;
+        private Dictionary<int, Score> scores;
+        private Dictionary<int, Race> races;
+
+        public Dictionary<int, Driver> Drivers { get => drivers; set => drivers = value; }
+        public Dictionary<string, Country> Countries { get => countries; set => countries = value; }
+        public Dictionary<int, Team> Teams { get => teams; set => teams = value; }
+        public Dictionary<int, Circuit> Circuits { get => circuits; set => circuits = value; }
+        public Dictionary<int, RacePoints> RacesPoints { get => racesPoints; set => racesPoints = value; }
+        public Dictionary<int, Score> Scores { get => scores; set => scores = value; }
+        public Dictionary<int, Race> Races { get => races; set => races = value; }
+
         public void ExecuteSqlScript(string sqlScriptName)
         {
             var fileContent = File.ReadAllText(WORKINGPATH + sqlScriptName + ".sql");
@@ -225,9 +241,8 @@ namespace FormulaOne_Dll
             return dt;
         }
 
-        public List<Country> GetListCountry()
+        public void GetListCountry()
         {
-            List<Country> retVal = new List<Country>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -236,21 +251,19 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Countries = new Dictionary<string, Country>();
                 while (reader.Read())
                 {
                     string countryCode = reader.GetString(0);
                     string countryName = reader.GetString(1);
                     Country c = new Country(countryCode, countryName);
-                    retVal.Add(c);
+                    this.Countries.Add(c.CountryCode, c);
                 }
             }
-            return retVal;
         }
 
-        public List<Circuit> GetListCircuits()
+        public void GetListCircuits()
         {
-            List<Circuit> retVal = new List<Circuit>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -259,7 +272,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Circuits = new Dictionary<int, Circuit>();
                 while (reader.Read())
                 {
                     int id = reader.GetInt32(0);
@@ -270,15 +283,13 @@ namespace FormulaOne_Dll
                     string recordLap = reader.GetString(5);
                     string imgCircuit = reader.GetString(6);
                     Circuit c = new Circuit(id, name, length, nLaps, extCountry, recordLap, imgCircuit);
-                    retVal.Add(c);
+                    this.Circuits.Add(c.Id, c);
                 }
             }
-            return retVal;
         }
 
-        public List<Race> GetListRaces()
+        public void GetListRaces()
         {
-            List<Race> retVal = new List<Race>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -287,7 +298,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Races = new Dictionary<int, Race>();
                 while (reader.Read())
                 {
                     int idRace = reader.GetInt32(0);
@@ -295,15 +306,13 @@ namespace FormulaOne_Dll
                     int extCircuit = reader.GetInt32(2);
                     DateTime data = reader.GetDateTime(3);
                     Race r = new Race(idRace, name, extCircuit, data);
-                    retVal.Add(r);
+                    this.Races.Add(r.IdRace, r);
                 }
             }
-            return retVal;
         }
 
-        public List<Score> GetListScores()
+        public void GetListScores()
         {
-            List<Score> retVal = new List<Score>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -312,7 +321,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Scores = new Dictionary<int, Score>();
                 while (reader.Read())
                 {
                     int pos = reader.GetInt32(0);
@@ -320,15 +329,13 @@ namespace FormulaOne_Dll
                     int extDriver = reader.GetInt32(2);
                     int extTeam = reader.GetInt32(3);
                     Score s = new Score(pos, points, extDriver, extTeam);
-                    retVal.Add(s);
+                    this.Scores.Add(s.Pos, s);
                 }
             }
-            return retVal;
         }
 
-        public List<RacePoints> GetListRacePoints()
+        public void GetListRacePoints()
         {
-            List<RacePoints> retVal = new List<RacePoints>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -337,7 +344,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.RacesPoints = new Dictionary<int, RacePoints>();
                 while (reader.Read())
                 {
                     int id = reader.GetInt32(0);
@@ -346,15 +353,13 @@ namespace FormulaOne_Dll
                     int extRace = reader.GetInt32(3);
                     string fastestLap = reader.GetString(4);
                     RacePoints r = new RacePoints(id, extDriver, extPos, extRace, fastestLap);
-                    retVal.Add(r);
+                    this.RacesPoints.Add(r.Id, r);
                 }
             }
-            return retVal;
         }
 
-        public List<Driver> GetListDriver()
+        public void GetListDrivers()
         {
-            List<Driver> retVal = new List<Driver>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -363,7 +368,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Drivers = new Dictionary<int, Driver>();
                 while (reader.Read())
                 {
                     int driverNumber = reader.GetInt32(0);
@@ -381,15 +386,13 @@ namespace FormulaOne_Dll
                     string highestRaceFinish = reader.GetString(12);
                     int highestGridFinish = reader.GetInt32(13);
                     Driver d = new Driver(driverNumber, firstName, lastName, dob, placeOfBirth, extCountry, biography, imgDriver, podiums, totalPoints, grandPrix, worldChampionships, highestRaceFinish, highestGridFinish);
-                    retVal.Add(d);
+                    this.Drivers.Add(d.DriverNumber, d);
                 }
             }
-            return retVal;
         }
 
-        public List<Team> GetListTeam()
+        public void GetListTeam()
         {
-            List<Team> retVal = new List<Team>();
             using (SqlConnection dbConn = new SqlConnection())
             {
                 dbConn.ConnectionString = CONNECTION_STRING;
@@ -398,7 +401,7 @@ namespace FormulaOne_Dll
                 SqlCommand cmd = new SqlCommand(sql, dbConn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                this.Teams = new Dictionary<int, Team>();
                 while (reader.Read())
                 {
                     int teamId = reader.GetInt32(0);
@@ -417,64 +420,9 @@ namespace FormulaOne_Dll
                     string imgLogo = reader.GetString(13);
                     string imgCar = reader.GetString(14);
                     Team t = new Team(teamId, teamName, fullTeamName, teamBase, extCountry, teamChief, techCheif, powerUint, chassis, firstTeamEntry, worldCham, extFirstDriver, extSecondDriver, imgLogo, imgCar);
-                    retVal.Add(t);
+                    this.Teams.Add(t.Id, t);
                 }
             }
-            return retVal;
-        }
-
-        public static List<string> GetDrivers()
-        {
-            List<string> retVal = new List<string>();
-            using (SqlConnection dbCon = new SqlConnection())
-            {
-                dbCon.ConnectionString = CONNECTION_STRING;
-                Console.WriteLine("\nQuery data example:");
-                Console.WriteLine("==========================================\n");
-                string sql = "SELECT * FROM Drivers";
-                using (SqlCommand command = new SqlCommand(sql, dbCon))
-                {
-                    dbCon.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int number = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            Console.WriteLine("(0) (1)", number, name);
-                            retVal.Add(number + " - " + name);
-                        }
-                    }
-                }
-            }
-            return retVal;
-        }
-
-        public static List<string> GetTeams()
-        {
-            List<string> retVal = new List<string>();
-            using (SqlConnection dbCon = new SqlConnection())
-            {
-                dbCon.ConnectionString = CONNECTION_STRING;
-                Console.WriteLine("\nQuery data example:");
-                Console.WriteLine("==========================================\n");
-                string sql = "SELECT * FROM Teams";
-                using (SqlCommand command = new SqlCommand(sql, dbCon))
-                {
-                    dbCon.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            Console.WriteLine("(0) (1)", id, name);
-                            retVal.Add(id + " - " + name);
-                        }
-                    }
-                }
-            }
-            return retVal;
         }
 
     }

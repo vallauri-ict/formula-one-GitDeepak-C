@@ -10,12 +10,13 @@ namespace FormulaOne_WebServices.Controllers
     [ApiController]
     public class circuitController : ControllerBase
     {
+        DbTools db = new DbTools();
         // GET: api/<circuitController>
         [HttpGet]
         public IEnumerable<Circuit> Get()
         {
-            DbTools db = new DbTools();
-            return db.GetListCircuits();
+            db.GetListCircuits();
+            return db.Circuits.Values;
         }
 
         // GET api/<circuitController>/5

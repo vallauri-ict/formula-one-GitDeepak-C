@@ -10,12 +10,13 @@ namespace FormulaOne_WebServices.Controllers
     [ApiController]
     public class scoreController : ControllerBase
     {
+        DbTools db = new DbTools();
         // GET: api/<scoreController>
         [HttpGet]
         public IEnumerable<Score> Get()
         {
-            DbTools db = new DbTools();
-            return db.GetListScores();
+            db.GetListScores();
+            return db.Scores.Values;
         }
 
         // GET api/<scoreController>/5
