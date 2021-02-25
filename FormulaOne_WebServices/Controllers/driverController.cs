@@ -25,8 +25,9 @@ namespace FormulaOne_WebServices.Controllers
         public IEnumerable<DriverSimple> GetSimpleDriver()
         {
             db.GetListDrivers();
+            db.GetListTeam();
             List<DriverSimple> d = new List<DriverSimple>();
-            db.Drivers.Values.ToList().ForEach(driver => d.Add(new DriverSimple(driver)));
+            db.Drivers.Values.ToList().ForEach(driver => d.Add(new DriverSimple(driver, db.Teams[driver.DriverNumber].FullTeamName)));
             return d;
         }
 

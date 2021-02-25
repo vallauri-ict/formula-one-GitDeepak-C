@@ -9,14 +9,16 @@ namespace FormulaOne_Dll.DTO
         private string lastName;
         private string countryCode;
         private string imgDriver;
+        private string fullTeamName;
 
-        public DriverSimple(Driver d)
+        public DriverSimple(Driver d, string fullTeamName)
         {
             this.driverNumber = d.DriverNumber;
             this.FirstName = d.FirstName;
             this.LastName= d.LastName;
             this.CountryCode = d.ExtCountry;
             this.ImgDriver = d.ImgDriver;
+            this.FullTeamName = fullTeamName;
         }
 
         public int DriverNumber => driverNumber;
@@ -25,5 +27,14 @@ namespace FormulaOne_Dll.DTO
         public string LastName { get => lastName; set => lastName = value; }
         public string CountryCode { get => countryCode; set => countryCode = value; }
         public string ImgDriver { get => imgDriver; set => imgDriver = value; }
+        public string CountryFlag 
+        { 
+            get 
+            {
+                return string.Format("https://www.countryflags.io/{0}/flat/64.png", CountryCode);
+            } 
+        }
+
+        public string FullTeamName { get => fullTeamName; set => fullTeamName = value; }
     }
 }
