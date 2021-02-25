@@ -45,7 +45,9 @@
     <Compile Include="Country.cs" />
     <Compile Include="DbTools.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="DTO\CircuitSimple.cs" />
     <Compile Include="DTO\DriverSimple.cs" />
+    <Compile Include="DTO\TeamSimple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="RacePoints.cs" />

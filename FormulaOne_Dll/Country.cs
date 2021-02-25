@@ -12,6 +12,8 @@ namespace FormulaOne_Dll
         private string countryCode;
         private string countryName;
 
+        public Country() { }
+
         public Country(string countryCode, string countryName)
         {
             this.CountryCode = countryCode;

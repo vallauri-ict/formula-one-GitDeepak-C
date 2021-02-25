@@ -2,18 +2,12 @@
 
 namespace FormulaOne_Dll.DTO
 {
-    //[DataContract(Name = "driver")]
     public class DriverSimple
     {
-        //[DataMember(Name = "driverNumber")]
         private readonly int driverNumber;
-        //[DataMember(Name = "firstName")]
         private string firstName;
-        //[DataMember(Name = "lastName")]
         private string lastName;
-        //[DataMember(Name = "countryCode")]
         private string countryCode;
-        //[DataMember(Name = "imgDriver")]
         private string imgDriver;
 
         public DriverSimple(Driver d)

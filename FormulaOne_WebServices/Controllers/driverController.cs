@@ -32,9 +32,13 @@ namespace FormulaOne_WebServices.Controllers
 
         // GET api/<driverController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Driver Get(int id)
         {
-            return "value";
+            db.GetListDrivers();
+            if (!db.Drivers.ContainsKey(id))
+                return new Driver();
+            
+            return db.Drivers[id];
         }
 
         // POST api/<driverController>

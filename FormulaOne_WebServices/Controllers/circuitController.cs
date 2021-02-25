@@ -21,9 +21,13 @@ namespace FormulaOne_WebServices.Controllers
 
         // GET api/<circuitController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Circuit Get(int id)
         {
-            return "value";
+            db.GetListCircuits();
+            if (!db.Circuits.ContainsKey(id))
+                return new Circuit();
+
+            return db.Circuits[id];
         }
 
         // POST api/<circuitController>

@@ -20,10 +20,14 @@ namespace FormulaOne_WebServices
         }
 
         // GET api/<countryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{countrycode}")]
+        public Country Get(string countryCode)
         {
-            return "value";
+            db.GetListCountry();
+            if (!db.Countries.ContainsKey(countryCode))
+                return new Country();
+
+            return db.Countries[countryCode];
         }
 
         // POST api/<countryController>
