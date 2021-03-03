@@ -9,16 +9,16 @@ namespace FormulaOne_Dll.DTO
         private string lastName;
         private string countryCode;
         private string imgDriver;
-        private string fullTeamName;
+        private string teamName;
 
-        public DriverSimple(Driver d, string fullTeamName)
+        public DriverSimple(Driver d, Team t)
         {
             this.driverNumber = d.DriverNumber;
             this.FirstName = d.FirstName;
             this.LastName= d.LastName;
             this.CountryCode = d.ExtCountry;
             this.ImgDriver = d.ImgDriver;
-            this.FullTeamName = fullTeamName;
+            this.TeamName = t.Name;
         }
 
         public int DriverNumber => driverNumber;
@@ -35,6 +35,6 @@ namespace FormulaOne_Dll.DTO
             } 
         }
 
-        public string FullTeamName { get => fullTeamName; set => fullTeamName = value; }
+        public string TeamName { get => teamName; set => teamName = value; }
     }
 }

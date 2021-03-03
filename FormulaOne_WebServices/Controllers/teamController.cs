@@ -26,7 +26,7 @@ namespace FormulaOne_WebServices
         {
             db.GetListTeam();
             List<TeamSimple> t = new List<TeamSimple>();
-            db.Teams.Values.ToList().ForEach(team => t.Add(new TeamSimple(team)));
+            db.Teams.Values.ToList().ForEach(team => t.Add(new TeamSimple(team, db.GetDriverById(team.ExtFirstDriver), db.GetDriverById(team.ExtSecondDriver))));
             return t;
         }
 

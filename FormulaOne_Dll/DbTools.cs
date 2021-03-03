@@ -425,5 +425,31 @@ namespace FormulaOne_Dll
             }
         }
 
+        public Team GetTeamByDriverNumber(int driverNumber)
+        {
+            GetListTeam();
+            Team t = new Team();
+            foreach(var item in Teams.Values)
+            {
+                if (item.ExtFirstDriver == driverNumber || item.ExtSecondDriver == driverNumber)
+                    t = item;
+            }
+
+            return t;
+        }
+
+        public Driver GetDriverById(int driverNumber)
+        {
+            GetListDrivers();
+            Driver d = new Driver();
+
+            foreach(var item in Drivers.Values)
+            {
+                if (item.DriverNumber == driverNumber)
+                    d = item;
+            }
+
+            return d;
+        }
     }
 }

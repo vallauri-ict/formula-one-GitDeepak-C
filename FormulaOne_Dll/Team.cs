@@ -38,7 +38,7 @@ namespace FormulaOne_Dll
             string chassis, 
             int teamEntry,
             int worldChampionships,
-            int extFirstDruver,
+            int extFirstDriver,
             int extSecondDriver,
             string imgLogo,
             string imgCar

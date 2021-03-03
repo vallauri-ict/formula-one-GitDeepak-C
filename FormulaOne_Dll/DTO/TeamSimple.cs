@@ -11,17 +11,21 @@ namespace FormulaOne_Dll.DTO
         private readonly int id;
         private string name;
         private string logo;
-        private int extFirstDriver;
-        private int extSecondDriver;
         private string img;
+        private string firstDriverName;
+        private string firstDriverSurname;
+        private string secondDriverName;
+        private string secondDriversurname;
 
-        public TeamSimple(Team t)
+        public TeamSimple(Team t, Driver d1, Driver d2)
         {
             this.id = t.Id;
             this.Name = t.Name;
             this.Logo = t.ImgLogo;
-            this.ExtFirstDriver = t.ExtFirstDriver;
-            this.ExtSecondDriver = t.ExtSecondDriver;
+            this.FirstDriverName = d1.FirstName;
+            this.FirstDriverSurname = d1.LastName;
+            this.SecondDriverName = d2.FirstName;
+            this.SecondDriversurname = d2.LastName;
             this.Img = t.ImgCar;
         }
 
@@ -29,8 +33,11 @@ namespace FormulaOne_Dll.DTO
 
         public string Name { get => name; set => name = value; }
         public string Logo { get => logo; set => logo = value; }
-        public int ExtFirstDriver { get => extFirstDriver; set => extFirstDriver = value; }
-        public int ExtSecondDriver { get => extSecondDriver; set => extSecondDriver = value; }
         public string Img { get => img; set => img = value; }
+
+        public string FirstDriverName { get => firstDriverName; set => firstDriverName = value; }
+        public string FirstDriverSurname { get => firstDriverSurname; set => firstDriverSurname = value; }
+        public string SecondDriverName { get => secondDriverName; set => secondDriverName = value; }
+        public string SecondDriversurname { get => secondDriversurname; set => secondDriversurname = value; }
     }
 }
