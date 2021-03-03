@@ -451,5 +451,31 @@ namespace FormulaOne_Dll
 
             return d;
         }
+
+        public Race GetRaceById()
+        {
+            GetListRaces();
+            Race r = new Race();
+            foreach(var item in Races.Values)
+            {
+                if (item.IdRace == r.IdRace)
+                    r = item;
+            }
+
+            return r;
+        }
+
+        public RacePoints GetRacePointsById(int pos)
+        {
+            GetListRacePoints();
+            RacePoints rp = new RacePoints();
+            foreach (var item in RacesPoints.Values)
+            {
+                if (item.ExtPos == pos)
+                    rp = item;
+            }
+
+            return rp;
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using FormulaOne_Dll;
+using FormulaOne_Dll.DTO;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,6 +19,16 @@ namespace FormulaOne_WebServices.Controllers
         {
             db.GetListScores();
             return db.Scores.Values;
+        }
+
+        [HttpGet("simple")]
+        public IEnumerable<ScoreSimple> GetSimpleDriver()
+        {
+            db.GetListScores();
+            db.GetListTeam();
+            List<ScoreSimple> s = new List<ScoreSimple>();
+            db.Scores.Values.ToList().ForEach(score => s.Add(new ScoreSimple(score, db.GetRaceById(), db.GetDriverById(score.ExtDriver), db.Teams[score.ExtTeam], db.GetRacePointsById(score.Pos))));
+            return s;
         }
 
         // GET api/<scoreController>/5
