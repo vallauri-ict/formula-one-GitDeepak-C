@@ -1,5 +1,7 @@
 ﻿using FormulaOne_Dll;
 using System;
+using System.IO;
+using System.Net;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -56,6 +58,25 @@ namespace FormulaOne_WebForm
             {
                 GridViewDati.DataSource = DbTools.GetDaTa(cmbDb.Text);
                 GridViewDati.DataBind();
+            }
+        }
+
+        public void GetCountry(string isoCode = "")
+        {
+            HttpWebRequest apiRequest = WebRequest.Create("https://localhost:44308/api/Country/" + isoCode + "") as HttpWebRequest;
+            string apiResponse = "";
+            try
+            {
+                using(HttpWebResponse response = apiRequest.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    apiResponse = reader.ReadToEnd();
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
