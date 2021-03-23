@@ -48,7 +48,7 @@ namespace FormulaOne_WebForm
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
