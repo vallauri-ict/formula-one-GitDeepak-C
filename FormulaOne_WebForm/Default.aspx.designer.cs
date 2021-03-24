@@ -40,5 +40,14 @@ namespace FormulaOne_WebForm
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewDati;
+
+        /// <summary>
+        /// Controllo lbxNazioni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbxNazioni;
     }
 }

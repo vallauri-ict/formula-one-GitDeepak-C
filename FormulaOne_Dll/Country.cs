@@ -22,5 +22,10 @@ namespace FormulaOne_Dll
 
         public string CountryCode { get => countryCode; set => countryCode = value; }
         public string CountryName { get => countryName; set => countryName = value; }
+
+        public override string ToString()
+        {
+            return countryCode + " - " + countryName;
+        }
     }
 }

@@ -116,6 +116,7 @@
             <asp:GridView ID="GridViewDati" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
                 HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnRowDataBound="GridView1_RowDataBound">
             </asp:GridView>
+            <asp:ListBox ID="lbxNazioni" runat="server" Height="400px" Width="400px"></asp:ListBox>
         </div>
     </form>
 </body>

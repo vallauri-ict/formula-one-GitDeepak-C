@@ -18,6 +18,7 @@ namespace FormulaOne_WebForm
                 //lblMessaggio.Text = "Benvenuto, per visualizzare le nazioni, premere il pulsante Mostra Nazioni!!";
                 cmbDb.DataSource = DbTools.getTables();
                 cmbDb.DataBind();
+                GetCountry();
             }
             else
             {
@@ -56,6 +57,7 @@ namespace FormulaOne_WebForm
         {
             if (!cmbDb.Text.StartsWith("-"))
             {
+                lbxNazioni.Visible = false;
                 GridViewDati.DataSource = DbTools.GetDaTa(cmbDb.Text);
                 GridViewDati.DataBind();
             }
@@ -63,7 +65,7 @@ namespace FormulaOne_WebForm
 
         public void GetCountry(string isoCode = "")
         {
-            HttpWebRequest apiRequest = WebRequest.Create("https://localhost:44308/api/Country/" + isoCode + "") as HttpWebRequest;
+            HttpWebRequest apiRequest = WebRequest.Create("https://localhost:44322/api/Country/" + isoCode + "") as HttpWebRequest;
             string apiResponse = "";
             try
             {
@@ -71,7 +73,10 @@ namespace FormulaOne_WebForm
                 {
                     StreamReader reader = new StreamReader(response.GetResponseStream());
                     apiResponse = reader.ReadToEnd();
-                    
+                    Country[] oCountry = Newtonsoft.Json.JsonConvert.DeserializeObject<Country[]>(apiResponse);
+                    lbxNazioni.DataSource = oCountry;
+                    lbxNazioni.DataBind();
+                    lbxNazioni.Visible = true;
                 }
             }
             catch (Exception ex)
