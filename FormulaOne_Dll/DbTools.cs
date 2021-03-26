@@ -452,13 +452,13 @@ namespace FormulaOne_Dll
             return d;
         }
 
-        public Race GetRaceById()
+        public Race GetRaceById(RacePoints rp)
         {
             GetListRaces();
             Race r = new Race();
             foreach(var item in Races.Values)
             {
-                if (item.IdRace == r.IdRace)
+                if (item.IdRace == rp.ExtRace)
                     r = item;
             }
 

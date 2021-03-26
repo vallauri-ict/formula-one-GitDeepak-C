@@ -27,7 +27,7 @@ namespace FormulaOne_WebServices.Controllers
             db.GetListScores();
             db.GetListTeam();
             List<ScoreSimple> s = new List<ScoreSimple>();
-            db.Scores.Values.ToList().ForEach(score => s.Add(new ScoreSimple(score, db.GetRaceById(), db.GetDriverById(score.ExtDriver), db.Teams[score.ExtTeam], db.GetRacePointsById(score.Pos))));
+            db.Scores.Values.ToList().ForEach(score => s.Add(new ScoreSimple(score, db.GetRaceById(db.GetRacePointsById(score.Pos)), db.GetDriverById(score.ExtDriver), db.Teams[score.ExtTeam], db.GetRacePointsById(score.Pos))));
             return s;
         }
 
