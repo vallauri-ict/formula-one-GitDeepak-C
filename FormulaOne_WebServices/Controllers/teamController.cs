@@ -15,19 +15,19 @@ namespace FormulaOne_WebServices
         DbTools db = new DbTools();
         // GET: api/<teamController>
         [HttpGet]
-        public IEnumerable<Team> Get()
-        {
-            db.GetListTeam();
-            return db.Teams.Values;
-        }
-
-        [HttpGet("simple")]
         public IEnumerable<TeamSimple> GetSimpleTeam()
         {
             db.GetListTeam();
             List<TeamSimple> t = new List<TeamSimple>();
             db.Teams.Values.ToList().ForEach(team => t.Add(new TeamSimple(team, db.GetDriverById(team.ExtFirstDriver), db.GetDriverById(team.ExtSecondDriver))));
             return t;
+        }
+        
+        [HttpGet("all")]
+        public IEnumerable<Team> Get()
+        {
+            db.GetListTeam();
+            return db.Teams.Values;
         }
 
         // GET api/<teamController>/5
@@ -42,15 +42,15 @@ namespace FormulaOne_WebServices
         }
 
         // GET api/<teamController>/5
-        [HttpGet("{teamname}")]
-        public Team GetByTeamName(int id)
-        {
-            db.GetListTeam();
-            if (!db.Teams.ContainsKey(id))
-                return new Team();
+        //[HttpGet("{teamname}")]
+        //public Team GetByTeamName(int id)
+        //{
+        //    db.GetListTeam();
+        //    if (!db.Teams.ContainsKey(id))
+        //        return new Team();
 
-            return db.Teams[id];
-        }
+        //    return db.Teams[id];
+        //}
 
         // POST api/<teamController>
         [HttpPost]

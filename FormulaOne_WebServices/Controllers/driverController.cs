@@ -15,19 +15,19 @@ namespace FormulaOne_WebServices.Controllers
         DbTools db = new DbTools();
         // GET: api/<driverController>
         [HttpGet]
-        public IEnumerable<Driver> GetAllDrivers()
-        {
-            db.GetListDrivers();
-            return db.Drivers.Values;
-        }
-
-        [HttpGet("simple")]
         public IEnumerable<DriverSimple> GetSimpleDriver()
         {
             db.GetListDrivers();
             List<DriverSimple> d = new List<DriverSimple>();
             db.Drivers.Values.ToList().ForEach(driver => d.Add(new DriverSimple(driver, db.GetTeamByDriverNumber(driver.DriverNumber))));
             return d;
+        }
+
+        [HttpGet("all")]
+        public IEnumerable<Driver> GetAllDrivers()
+        {
+            db.GetListDrivers();
+            return db.Drivers.Values;
         }
 
         // GET api/<driverController>/5

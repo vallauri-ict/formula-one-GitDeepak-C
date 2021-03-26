@@ -15,13 +15,6 @@ namespace FormulaOne_WebServices.Controllers
         DbTools db = new DbTools();
         // GET: api/<scoreController>
         [HttpGet]
-        public IEnumerable<Score> Get()
-        {
-            db.GetListScores();
-            return db.Scores.Values;
-        }
-
-        [HttpGet("simple")]
         public IEnumerable<ScoreSimple> GetSimpleDriver()
         {
             db.GetListScores();
@@ -29,6 +22,13 @@ namespace FormulaOne_WebServices.Controllers
             List<ScoreSimple> s = new List<ScoreSimple>();
             db.Scores.Values.ToList().ForEach(score => s.Add(new ScoreSimple(score, db.GetRaceById(db.GetRacePointsById(score.Pos)), db.GetDriverById(score.ExtDriver), db.Teams[score.ExtTeam], db.GetRacePointsById(score.Pos))));
             return s;
+        }        
+
+        [HttpGet("all")]
+        public IEnumerable<Score> Get()
+        {
+            db.GetListScores();
+            return db.Scores.Values;
         }
 
         // GET api/<scoreController>/5
