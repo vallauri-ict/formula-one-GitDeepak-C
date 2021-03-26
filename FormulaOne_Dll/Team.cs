@@ -76,5 +76,10 @@ namespace FormulaOne_Dll
         public int ExtSecondDriver { get => extSecondDriver; set => extSecondDriver = value; }
         public string ImgLogo { get => imgLogo; set => imgLogo = value; }
         public string ImgCar { get => imgCar; set => imgCar = value; }
+
+        public override string ToString()
+        {
+            return id + " - " + FullTeamName;
+        }
     }
 }

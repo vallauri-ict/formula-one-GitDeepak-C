@@ -18,7 +18,9 @@ namespace FormulaOne_WebForm
                 //lblMessaggio.Text = "Benvenuto, per visualizzare le nazioni, premere il pulsante Mostra Nazioni!!";
                 cmbDb.DataSource = DbTools.getTables();
                 cmbDb.DataBind();
-                GetCountry();
+                //GetCountry();
+                GetDrivers();
+                //GetTeams();
             }
             else
             {
@@ -73,8 +75,52 @@ namespace FormulaOne_WebForm
                 {
                     StreamReader reader = new StreamReader(response.GetResponseStream());
                     apiResponse = reader.ReadToEnd();
-                    Country[] oCountry = Newtonsoft.Json.JsonConvert.DeserializeObject<Country[]>(apiResponse);
-                    lbxNazioni.DataSource = oCountry;
+                    Country[] lstCountry = Newtonsoft.Json.JsonConvert.DeserializeObject<Country[]>(apiResponse);
+                    lbxNazioni.DataSource = lstCountry;
+                    lbxNazioni.DataBind();
+                    lbxNazioni.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void GetDrivers(string idDriver = "")
+        {
+            HttpWebRequest apiRequest = WebRequest.Create("https://localhost:44322/api/Driver/" + idDriver + "") as HttpWebRequest;
+            string apiResponse = "";
+            try
+            {
+                using (HttpWebResponse response = apiRequest.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    apiResponse = reader.ReadToEnd();
+                    Driver[] lstDriver = Newtonsoft.Json.JsonConvert.DeserializeObject<Driver[]>(apiResponse);
+                    lbxNazioni.DataSource = lstDriver;
+                    lbxNazioni.DataBind();
+                    lbxNazioni.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void GetTeams(string idTeam = "")
+        {
+            HttpWebRequest apiRequest = WebRequest.Create("https://localhost:44322/api/Team/" + idTeam + "") as HttpWebRequest;
+            string apiResponse = "";
+            try
+            {
+                using (HttpWebResponse response = apiRequest.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    apiResponse = reader.ReadToEnd();
+                    Team[] lstTeam = Newtonsoft.Json.JsonConvert.DeserializeObject<Team[]>(apiResponse);
+                    lbxNazioni.DataSource = lstTeam;
                     lbxNazioni.DataBind();
                     lbxNazioni.Visible = true;
                 }

@@ -68,5 +68,10 @@ namespace FormulaOne_Dll
         public int WorldChampionships { get => worldChampionships; set => worldChampionships = value; }
         public string HighestRaceFinish { get => highestRaceFinish; set => highestRaceFinish = value; }
         public int HighestGridFinish { get => highestGridFinish; set => highestGridFinish = value; }
+
+        public override string ToString()
+        {
+            return driverNumber + " - " + firstName + " - " + lastName;
+        }
     }
 }
